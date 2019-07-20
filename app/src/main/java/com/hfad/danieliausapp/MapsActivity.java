@@ -2,9 +2,7 @@ package com.hfad.danieliausapp;
 
 import androidx.fragment.app.FragmentActivity;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -44,12 +42,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        MyAsyncTask myTask = new MyAsyncTask();
-        myTask.execute();
-
         /*
-        * fetch json data from url in the form of json string using volley library
-        * */
+         * fetch json data from url in the form of json string using volley library
+         * */
 
         StringRequest request = new StringRequest(url, new Response.Listener<String>() {
             @Override
@@ -120,19 +115,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.addMarker(new MarkerOptions().position(pirma_masina).title(plateNumber.get(i)));
         }
         mMap.moveCamera(CameraUpdateFactory.newLatLng(pirma_masina));
-    }
-
-    private class MyAsyncTask extends AsyncTask<Void, Void, Void>
-    {
-        @Override
-        protected Void doInBackground(Void... params) {
-            Log.e("Async", "veikia");
-            return null;
-        }
-        @Override
-        protected void onPostExecute(Void result) {
-            Log.e("Async", "baige veikti");
-        }
     }
 
 }
